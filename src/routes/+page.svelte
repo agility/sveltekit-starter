@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+  import AgilityPages from "../modules/AgilityPages.svelte";
+  import type { PageProps } from "./$types";
+
+  let { data }: PageProps = $props();
+  const { page } = data;
+</script>
+
+<AgilityPages {page} />
+
+

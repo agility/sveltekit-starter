@@ -1,8 +1,16 @@
-<script lang="ts">
-    let { children } = $props();
+<script>
+  import Footer from "../modules/Footer.svelte";
+  import Header from "../modules/Header.svelte";
+  // this imports tailwindcss styles
+  import '../app.css';
 </script>
-<div>
-    Layout
 
-    {@render children()}
-</div>
+<main>
+  <Header />
+
+  <section>
+    <slot></slot>
+  </section>
+
+  <Footer />
+</main>
