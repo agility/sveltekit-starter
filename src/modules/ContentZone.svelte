@@ -4,14 +4,15 @@
   import PostsListing from "./agility-components/PostsListing/PostsListing.svelte";
   import TextBlockWithImage from "./agility-components/TextBlockWithImage.svelte";
   import RichTextArea from "./agility-components/RichTextArea.svelte";
-
+  import PostDetails from "./agility-components/PostDetails.svelte";
   export let Components: any;
+  export let dynamicPageItem: any;
+  
 
 </script>
 
 <div>
   {#each Components as component}
-  
     {#if component.module === "PostsListing"}
       <PostsListing {...component} />
     {:else if component.module === "FeaturedPost"}
@@ -22,8 +23,10 @@
       <RichTextArea {...component} />
     {:else if component.module === "TextBlockWithImage"}
       <TextBlockWithImage {...component} />
+    {:else if component.module === "PostDetails"}
+      <PostDetails {...component} {dynamicPageItem} />
     {:else}
-      <p>Component not found</p>
+      <p>Component {component.module} not found</p>
     {/if}
   {/each}
 </div>

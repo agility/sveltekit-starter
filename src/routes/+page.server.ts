@@ -4,7 +4,7 @@ import { getAgilityPage } from '$lib/agility/getAgilityPage';
 
 export const load: PageServerLoad = async ({ params, cookies }) => {
 	
-    const pageInSitemap = await getAgilityPage({path:'home'}, cookies)
+    const pageInSitemap = await getAgilityPage({path:'home', cookies})
  
     if (pageInSitemap) {
         return pageInSitemap;

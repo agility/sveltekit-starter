@@ -7,11 +7,7 @@ import {
 } from "$env/static/private";
 import { error } from "@sveltejs/kit";
 
-export const getAgilityPage = async (params, cookies) => {
-
-//   console.log(cookies)
-
-    // console.log('Getting Page')
+export const getAgilityPage = async ({path, cookies}) => {
 
   const isPublishedMode = cookies.get('publishedMode', { path: '/'}) === 'true';
   const isPreview = NODE_ENV === 'development' && !isPublishedMode;
@@ -28,8 +24,7 @@ export const getAgilityPage = async (params, cookies) => {
     languageCode: "en-us"
   });
 
-  const path = `/${params.path}`;
-  const pageInSitemap = sitemap[path];
+  const pageInSitemap = sitemap[`/${path}`];
 
   if (!pageInSitemap) {
     error(404, "Not found");
@@ -41,7 +36,7 @@ export const getAgilityPage = async (params, cookies) => {
   });
 
   const response = {
-    slug: params.path,
+    slug: path,
     page,
   };
 

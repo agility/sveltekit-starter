@@ -12,12 +12,7 @@ export const load: LayoutServerLoad = async ({ params, cookies }) => {
     const siteheader = await getSiteHeader(cookies);
    
     const isPublishedMode = cookies.get('publishedMode', { path: '/'}) === 'true';
-    
-    
-    console.log('Layout isPublishedMode', isPublishedMode)
     const isPreview = NODE_ENV === 'development' && !isPublishedMode;
-  
-    console.log('Layout isPreview', isPreview)
 
     return {
       siteheader,
