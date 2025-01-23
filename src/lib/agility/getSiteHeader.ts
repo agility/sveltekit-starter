@@ -1,23 +1,19 @@
-import { AGILITY_GUID, AGILITY_API_PREVIEW_KEY, NODE_ENV, AGILITY_LOCALES, AGILITY_SITEMAP } from '$env/static/private';
+import { AGILITY_GUID, AGILITY_API_PREVIEW_KEY, AGILITY_API_FETCH_KEY, NODE_ENV, AGILITY_LOCALES, AGILITY_SITEMAP } from '$env/static/private';
 import { getApi } from '@agility/content-fetch';
 
-export const getSiteHeader = async (cookies) => {
+export const getSiteHeader = async (isPreview) => {
 
-    const isPublishedMode = cookies.get('publishedMode', { path: '/'}) === 'true';
-    const isPreview = NODE_ENV === 'development' || !isPublishedMode;
-  
 
     const api = await getApi({
         guid: AGILITY_GUID,
-        apiKey: AGILITY_API_PREVIEW_KEY,
-        isPreview: NODE_ENV === 'development'
+        apiKey: isPreview ? AGILITY_API_PREVIEW_KEY : AGILITY_API_FETCH_KEY,
+        isPreview
     });
 
     const header = await api.getContentList({
         referenceName: "siteheader",
         languageCode: AGILITY_LOCALES,
-        take: 1,
-        locale: AGILITY_LOCALES
+        take: 1
     })
 
     const links = await api.getSitemapNested({
@@ -25,8 +21,12 @@ export const getSiteHeader = async (cookies) => {
         languageCode: AGILITY_LOCALES
     });
 
+    const logo = header.items[0].fields.logo;
+    const title = header.items[0].fields.siteName;
+
     const response = {
-        header,
+        logo,
+        title,
         links
     }
 

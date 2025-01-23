@@ -15,9 +15,9 @@
 </script>
 
 <div
-  class:bg-yellow-500={isPreview}
-  class:bg-green-500={!isPreview}
-  class=" bg-yellow-500 p-2 flex flex-row justify-between mb-4 items-center"
+  class={`p-2 flex flex-row justify-between mb-4 items-center
+  ${isPreview ? "bg-yellow-500" : "bg-green-500"}
+  `}
 >
   <div class="flex-1">
     <svg

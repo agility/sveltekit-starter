@@ -4,9 +4,13 @@
 
   let { data }: PageProps = $props();
   const { page } = data;
-  const { templateName } = page;
-
+  const { header : { title }, dynamicPageItem, templateName} = page
+  
 </script>
+
+<svelte:head>
+  <title>{`${dynamicPageItem ? dynamicPageItem.fields.title + ' | ' : ''}${page.title} | ${title}`}</title>
+</svelte:head>
 
 {#if templateName === "Main Template"}
   <MainTemplate {page}></MainTemplate>

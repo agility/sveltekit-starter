@@ -1,7 +1,6 @@
 <script lang="ts">
     export let header: any;
-    export let links: any;
-    const { logo } = header.items[0].fields;
+    const { logo, links } = header;
   </script>
   
   <div class="site-header max-w-screen-xl mx-auto flex flex-row justify-between items-center">

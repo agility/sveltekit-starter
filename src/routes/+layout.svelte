@@ -5,13 +5,15 @@
   import PreviewBar from "../modules/PreviewBar.svelte";
 
   let { children, data } = $props();
-  const { header, links } = data.siteheader;
+  
+  const { header } = data.page;
   const { isPreview } = data;
+
 </script>
 
 <div class="dark:bg-black min-h-screen">
   <PreviewBar {isPreview} />
-  <SiteHeader {header} {links} />
+  <SiteHeader {header} />
   <main>
     {@render children()}
   </main>

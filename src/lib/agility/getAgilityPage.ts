@@ -1,5 +1,6 @@
 import agility from "@agility/content-fetch";
 import {
+  AGILITY_LOCALES,
   AGILITY_GUID,
   AGILITY_API_PREVIEW_KEY,
   AGILITY_API_FETCH_KEY,
@@ -7,12 +8,8 @@ import {
 } from "$env/static/private";
 import { error } from "@sveltejs/kit";
 
-export const getAgilityPage = async ({path, cookies}) => {
+export const getAgilityPage = async ({path, isPreview}) => {
 
-  const isPublishedMode = cookies.get('publishedMode', { path: '/'}) === 'true';
-  const isPreview = NODE_ENV === 'development' && !isPublishedMode;
-
-  
   const api = agility.getApi({
     guid: AGILITY_GUID,
     apiKey: isPreview ? AGILITY_API_PREVIEW_KEY : AGILITY_API_FETCH_KEY,
@@ -34,6 +31,7 @@ export const getAgilityPage = async ({path, cookies}) => {
     pageID: pageInSitemap.pageID,
     locale: "en-us"
   });
+
 
   const response = {
     slug: path,
