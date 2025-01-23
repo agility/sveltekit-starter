@@ -1,4 +1,0 @@
-
-<div>
-    Site header
-</div>
