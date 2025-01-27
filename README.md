@@ -1,38 +1,34 @@
-# sv
+# Agility CMS SvelteKit Starter
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a starter project for building a SvelteKit application with Agility CMS.
 
-## Creating a project
+## Getting Started
 
-If you're seeing this, you've probably already done this step. Congrats!
+To start using the Agility CMS & SvelteKit Starter, follow these steps:
 
-```bash
-# create a new project in the current directory
-npx sv create
+1. Clone this repository.
+2. Run `yarn install` to install the dependencies.
+3. Rename the `.env.local.example` file to `.env.local`.
+4. Retrieve your `GUID`, `API Keys (Preview/Fetch)`, and `Security Key` from Agility CMS by going to [Settings > API Keys](https://manager.agilitycms.com/settings/apikeys).
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Development
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To start a development server:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+yarn dev
 ```
+
+This will launch the site in development mode, using your preview API key to pull in the latest content from Agility CMS.
 
 ## Building
-
 To create a production version of your app:
-
 ```bash
-npm run build
+yarn build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Previewing
+To preview the production build:
+```bash
+yarn preview
+```
