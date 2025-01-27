@@ -5,8 +5,7 @@ import { getAgilityPage } from '$lib/agility/getAgilityPage';
 import { getDynamicPageItem } from '$lib/agility/getDynamicPageItem';
 import { getCategoriesForPosts } from '$lib/agility/getCategoriesForPosts';
 import {
-  NODE_ENV,
-  AGILITY_SHOW_PREVIEW_BAR,
+  NODE_ENV
 } from "$env/static/private";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'; // Import all solid icons
@@ -23,7 +22,6 @@ export const load: LayoutServerLoad = async ({ params, cookies }) => {
   
     const isPreviewMode = cookies.get('previewMode', { path: '/'}) === 'true';
     const isPreview = NODE_ENV === 'development' && isPreviewMode;
-    const showPreviewBar = AGILITY_SHOW_PREVIEW_BAR === 'true';
     const path = params.path || 'home'
     
     const { page } = await getAgilityPage({path, isPreview})
@@ -44,7 +42,6 @@ export const load: LayoutServerLoad = async ({ params, cookies }) => {
 
     return {
       isPreview,
-      showPreviewBar,
       NODE_ENV,
       page,
     };
