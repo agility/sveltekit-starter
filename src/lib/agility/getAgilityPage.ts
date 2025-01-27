@@ -1,6 +1,7 @@
 import agility from "@agility/content-fetch";
 import {
   AGILITY_LOCALES,
+  AGILITY_SITEMAP,
   AGILITY_GUID,
   AGILITY_API_PREVIEW_KEY,
   AGILITY_API_FETCH_KEY,
@@ -8,7 +9,7 @@ import {
 } from "$env/static/private";
 import { error } from "@sveltejs/kit";
 
-export const getAgilityPage = async ({path, isPreview}) => {
+export const getAgilityPage = async ({path, isPreview}: {path:string, isPreview:boolean}) => {
 
   const api = agility.getApi({
     guid: AGILITY_GUID,
@@ -16,28 +17,19 @@ export const getAgilityPage = async ({path, isPreview}) => {
     isPreview,
   });
 
-  const sitemap = await api.getSitemapFlat({
-    channelName: "website",
-    languageCode: "en-us"
-  });
+  const page = await api.getPageByPath({
+    pagePath: `/${path}`,
+    channelName: AGILITY_SITEMAP,
+    locale: AGILITY_LOCALES 
+  })
 
-  const pageInSitemap = sitemap[`/${path}`];
-
-  if (!pageInSitemap) {
+  if(!page) {
     error(404, "Not found");
   }
 
-  const page = await api.getPage({
-    pageID: pageInSitemap.pageID,
-    locale: "en-us"
-  });
-
-  // console.log("Page", page);
-
-
   const response = {
     slug: path,
-    page,
+    page: page.page,
   };
 
   return response;
