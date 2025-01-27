@@ -18,9 +18,7 @@ export const ssr = true;
 
 export const load: LayoutServerLoad = async ({ params, cookies }) => { 
  
-
-  
-    const isPreviewMode = cookies.get('previewMode', { path: '/'}) === 'true';
+    const isPreviewMode = cookies.get('previewMode') === 'true';
     const isPreview = NODE_ENV === 'development' && isPreviewMode;
     const path = params.path || 'home'
     
@@ -31,13 +29,11 @@ export const load: LayoutServerLoad = async ({ params, cookies }) => {
       page.dynamicPageItem = dynamicPageItem
     }
 
+    const getCategories = await getCategoriesForPosts(page, isPreview)
+    page.zones = getCategories.zones
 
     const siteheader = await getSiteHeader(isPreview);
     page.header = siteheader
-
-
-    const pageWithPostsCategories = await getCategoriesForPosts(page, isPreview)
-    page.zones = pageWithPostsCategories.zones
 
 
     return {

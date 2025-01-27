@@ -1,8 +1,8 @@
 import { json } from '@sveltejs/kit';
 
 export async function POST({ request, cookies }) {
-    const previewMode = cookies.get('previewMode', {path: '/'});
-    if (previewMode) {
+    const previewModeCookie = cookies.get('previewMode');
+    if (previewModeCookie) {
         console.log('Leaving preview mode')
         cookies.delete('previewMode', {path: '/'});
     } else {
