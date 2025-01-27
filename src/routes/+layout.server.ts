@@ -21,8 +21,8 @@ export const load: LayoutServerLoad = async ({ params, cookies }) => {
  
 
   
-    const isPublishedMode = cookies.get('publishedMode', { path: '/'}) === 'true';
-    const isPreview = NODE_ENV === 'development' && !isPublishedMode;
+    const isPreviewMode = cookies.get('previewMode', { path: '/'}) === 'true';
+    const isPreview = NODE_ENV === 'development' && isPreviewMode;
     const showPreviewBar = AGILITY_SHOW_PREVIEW_BAR === 'true';
     const path = params.path || 'home'
     
