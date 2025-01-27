@@ -4,11 +4,10 @@ import {
   AGILITY_GUID,
   AGILITY_API_PREVIEW_KEY,
   AGILITY_API_FETCH_KEY,
-  NODE_ENV,
 } from "$env/static/private";
 
 
-export const getCategoriesForPosts = async (page, isPreview) => {
+export const getCategoriesForPosts = async (page: any, isPreview: boolean) => {
     const api = agility.getApi({
       guid: AGILITY_GUID,
       apiKey: isPreview ? AGILITY_API_PREVIEW_KEY : AGILITY_API_FETCH_KEY,
@@ -17,14 +16,14 @@ export const getCategoriesForPosts = async (page, isPreview) => {
   
     // posts will come from zones
     const zones = page.zones;
-    const categoryPromises = [];
+    const categoryPromises:any = [];
   
     Object.keys(zones).forEach((zoneName) => {
       const modules = zones[zoneName];
-      modules.forEach((module) => {
+      modules.forEach((module: any) => {
 
         if (module.module === "PostsListing") {
-          module?.item?.fields?.posts?.forEach((post) => {
+          module?.item?.fields?.posts?.forEach((post: any) => {
             const { contentid } = post.fields.category;
             const categoryPromise = api
               .getContentItem({

@@ -1,7 +1,7 @@
 import { AGILITY_GUID, AGILITY_API_PREVIEW_KEY, AGILITY_API_FETCH_KEY, NODE_ENV, AGILITY_LOCALES, AGILITY_SITEMAP } from '$env/static/private';
 import { getApi } from '@agility/content-fetch';
 
-export const getDynamicPageItem = async ({path, dynamic, isPreview}) => {
+export const getDynamicPageItem = async ({path, dynamic, isPreview}:{path:string, dynamic:any, isPreview: boolean}) => {
 
     const api = await getApi({
         guid: AGILITY_GUID,
@@ -17,7 +17,7 @@ export const getDynamicPageItem = async ({path, dynamic, isPreview}) => {
 
 
     const newPath = path.split('/').pop();
-    const dynamicPageItem = dynamicContent.items.find(item => item.fields.slug === newPath);
+    const dynamicPageItem = dynamicContent.items.find((item:any) => item.fields.slug === newPath);
    
     return dynamicPageItem;
 }

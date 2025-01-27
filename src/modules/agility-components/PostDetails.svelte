@@ -1,7 +1,5 @@
 <script lang="ts">
-  export let item: any;
   export let dynamicPageItem: any;
-
   const {
     fields: { title, image, content, category, date },
   } = dynamicPageItem;

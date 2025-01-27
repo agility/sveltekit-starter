@@ -3,7 +3,6 @@
   let { page } = $props();
   const { zones, seo, dynamicPageItem } = page;
   const { MainContentZone } = zones;
-  
 </script>
 
 <div id="MainTemplate" class="dark:bg-black max-w-screen-xl mx-auto">

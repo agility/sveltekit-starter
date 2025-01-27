@@ -1,10 +1,10 @@
 import { AGILITY_GUID, AGILITY_API_PREVIEW_KEY, AGILITY_API_FETCH_KEY, NODE_ENV, AGILITY_LOCALES, AGILITY_SITEMAP } from '$env/static/private';
 import { getApi } from '@agility/content-fetch';
 
-export const getSiteHeader = async (isPreview) => {
+export const getSiteHeader = async (isPreview:boolean) => {
 
 
-    const api = await getApi({
+    const api = getApi({
         guid: AGILITY_GUID,
         apiKey: isPreview ? AGILITY_API_PREVIEW_KEY : AGILITY_API_FETCH_KEY,
         isPreview
