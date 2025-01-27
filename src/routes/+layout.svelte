@@ -13,7 +13,7 @@
 
 <div class="light dark:bg-black min-h-screen">
   {#if (NODE_ENV === 'production' && showPreviewBar || NODE_ENV === 'development')}
-  <PreviewBar {isPreview} />
+    <PreviewBar {isPreview} />
   {/if}
   <SiteHeader {header} />
   <main>
