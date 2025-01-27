@@ -12,9 +12,7 @@
 </script>
 
 <div class="light dark:bg-black min-h-screen">
-  {#if NODE_ENV === 'development'}
-    <PreviewBar {isPreview} />
-  {/if}
+  <PreviewBar {isPreview} />
   <SiteHeader {header} />
   <main>
     {@render children()}

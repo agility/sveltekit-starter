@@ -3,8 +3,10 @@
   import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
   import { faGithub } from '@fortawesome/free-brands-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+  import { onMount } from 'svelte';
 
   export let isPreview: boolean;
+
 
   async function toggle() {
     isPreview = !isPreview;

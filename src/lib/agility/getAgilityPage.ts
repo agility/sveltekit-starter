@@ -7,8 +7,10 @@ import {
   NODE_ENV,
 } from "$env/static/private";
 import { error } from "@sveltejs/kit";
+import { getDynamicPageItem } from '$lib/agility/getDynamicPageItem';
+import { getCategoriesForPosts } from '$lib/agility/getCategoriesForPosts';
 
-export const getAgilityPage = async ({path, isPreview}: {path?:string, isPreview?:boolean}) => {
+export const getAgilityPage = async ({path, isPreview}: {path:string, isPreview:boolean}) => {
 
   const api = agility.getApi({
     guid: AGILITY_GUID,
@@ -31,6 +33,16 @@ export const getAgilityPage = async ({path, isPreview}: {path?:string, isPreview
     pageID: pageInSitemap.pageID,
     locale: "en-us"
   });
+
+
+  if(page.dynamic){
+    const dynamicPageItem = await getDynamicPageItem({path, dynamic:page.dynamic, isPreview})
+    page.dynamicPageItem = dynamicPageItem
+  }
+
+  const getCategories = await getCategoriesForPosts(page, isPreview)
+  page.zones = getCategories.zones
+
 
   const response = {
     slug: path,

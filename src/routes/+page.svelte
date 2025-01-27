@@ -4,13 +4,17 @@
 
   let { data }: PageProps = $props();
   const { page } = data;
-  const { templateName } = page; 
+  const { templateName, seo } = page; 
   const { header : { title } } = page;
+
+
 
 </script>
 
 <svelte:head>
   <title>{`${title}`}</title>
+  <meta name="description" content="{seo.metaDescription}">
+  <meta name="keywords" content="{seo.metaKeywords}">
 </svelte:head>
 
 

@@ -4,12 +4,13 @@
 
   let { data }: PageProps = $props();
   const { page } = data;
-  const { header : { title }, dynamicPageItem, templateName} = page
-  
+  const { header : { title }, dynamicPageItem, templateName, seo} = page
 </script>
 
 <svelte:head>
   <title>{`${dynamicPageItem ? dynamicPageItem.fields.title + ' | ' : ''}${page.title} | ${title}`}</title>
+  <meta name="description" content="{seo.metaDescription}">
+  <meta name="keywords" content="{seo.metaKeywords}">
 </svelte:head>
 
 {#if templateName === "Main Template"}

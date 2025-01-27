@@ -1,7 +1,7 @@
 <script lang="ts">
   import FeaturedPost from "./agility-components/FeaturedPost.svelte";
   import Heading from "./agility-components/Heading.svelte";
-  import PostsListing from "./agility-components/PostsListing/PostsListing.svelte";
+  import PostsListing from "./agility-components/PostsListing.svelte";
   import TextBlockWithImage from "./agility-components/TextBlockWithImage.svelte";
   import RichTextArea from "./agility-components/RichTextArea.svelte";
   import PostDetails from "./agility-components/PostDetails.svelte";
