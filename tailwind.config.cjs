@@ -9,6 +9,12 @@ export default {
       colors: {
 				transparent: "transparent",
 				agility: "#222",
+        'header-light': '#000',
+        'header-dark': '#fff',
+        'text-light': '#000',
+        'text-dark': '#fff',
+        'background-light': '#fff',
+        'background-dark': '#000',
 				primary: {
 					100: "#a273ff",
 					200: "#935bff",

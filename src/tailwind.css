@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+
+     /* This adds additional light and dark
+     theme styling to the prose class from Tailwind CSS.
+     It's used in RichTextArea and PostDetails where
+     HTML is passed through and not rendered by Svelte and Tailwind */
+
+    :root {
+      --header-color-light: theme('colors.header-light');
+      --header-color-dark: theme('colors.header-dark');
+      --text-color-light: theme('colors.text-light');
+      --text-color-dark: theme('colors.text-dark');
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --header-color: var(--header-color-dark);
+        --text-color: var(--text-color-dark);
+      }
+    }
+  
+    @media (prefers-color-scheme: light) {
+      :root {
+        --header-color: var(--header-color-light);
+        --text-color: var(--text-color-light);
+      }
+    }
+
+    .prose {
+        h1 {
+            font-size: 3rem;
+            color: var(--header-color);
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: var(--header-color);
+          }
+        h3 {
+            font-size: 1.5rem;
+            color: var(--header-color);
+        }
+        p {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        a {
+            color: #3182ce;
+            text-decoration: underline;
+        }
+    }
+  }

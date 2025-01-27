@@ -3,6 +3,7 @@ import type { LayoutServerLoad } from './$types';
 import { getSiteHeader } from '$lib/agility/getSiteHeader';
 import { getAgilityPage } from '$lib/agility/getAgilityPage';
 import { getDynamicPageItem } from '$lib/agility/getDynamicPageItem';
+import { getCategoriesForPosts } from '$lib/agility/getCategoriesForPosts';
 import {
   NODE_ENV,
   AGILITY_SHOW_PREVIEW_BAR,
@@ -32,35 +33,14 @@ export const load: LayoutServerLoad = async ({ params, cookies }) => {
       page.dynamicPageItem = dynamicPageItem
     }
 
-    // featured post and posts listing need this
-    // const withCategories = await getCategoriesForPosts(page, isPreview)
-
-    // we need to augment the data with
-    // the categories for the posts
-
-
-    // we need a way to look up categories for
-    // featured posts and posts listings
-
-    // const zones = page.zones
-    // Object.keys(zones).forEach(zoneName => { 
-    //   const modules = zones[zoneName]
-    //   modules.forEach(module => {
-    //     if(module.module === "PostsListing"){
-    //       module?.item?.fields?.posts?.map(post => {
-    //         const category = post.fields.category
-    //         // console.log(category)
-    //       })
-    //     }
-
-    //     if(module.module === "Featured Posts"){
-    //     }
-    //   })
-    // })
-
 
     const siteheader = await getSiteHeader(isPreview);
     page.header = siteheader
+
+
+    const pageWithPostsCategories = await getCategoriesForPosts(page, isPreview)
+    page.zones = pageWithPostsCategories.zones
+
 
     return {
       isPreview,

@@ -3,7 +3,7 @@
     const { fields } = item;
     const { featuredPost } = fields;
 
-    // console.log('featuredPost->', item);
+    console.log('featuredPost->', item);
 </script>
 
 <div class="relative mb-8">
@@ -22,10 +22,8 @@
         <div class="sm:w-1/2 lg:w-1/3 bg-gray-100 p-8 border-2 border-t-0 rounded-b-lg sm:rounded-bl-none sm:rounded-r-lg sm:border-t-2 sm:border-l-0 relative">
             <a href={`/blog/${featuredPost.fields.slug}`} class="cursor-pointer">
                 <div class="font-display uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose after:content">
-                    <!-- {featuredPost.fields.category?.fields.title} -->
-                     Category
+                    {featuredPost.fields.category?.fields.title}
                 </div>
-                <!-- <div class="border-b-2 border-primary-500"> -->
                 <div class="mt-4 uppercase text-gray-600 italic font-semibold text-xs">
                     {new Date(featuredPost.properties.modified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </div>
