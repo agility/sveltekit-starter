@@ -7,12 +7,14 @@
   let { children, data } = $props();
   
   const { header } = data.page;
-  const { isPreview } = data;
+  const { isPreview, showPreviewBar, NODE_ENV } = data;
 
 </script>
 
-<div class="dark:bg-black min-h-screen">
+<div class="light dark:bg-black min-h-screen">
+  {#if (NODE_ENV === 'production' && showPreviewBar || NODE_ENV === 'development')}
   <PreviewBar {isPreview} />
+  {/if}
   <SiteHeader {header} />
   <main>
     {@render children()}

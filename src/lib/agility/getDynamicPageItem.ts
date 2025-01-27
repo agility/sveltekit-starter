@@ -15,6 +15,7 @@ export const getDynamicPageItem = async ({path, dynamic, isPreview}) => {
         locale: AGILITY_LOCALES
     })
 
+
     const newPath = path.split('/').pop();
     const dynamicPageItem = dynamicContent.items.find(item => item.fields.slug === newPath);
    

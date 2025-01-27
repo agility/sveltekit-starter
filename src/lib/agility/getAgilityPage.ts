@@ -32,6 +32,8 @@ export const getAgilityPage = async ({path, isPreview}) => {
     locale: "en-us"
   });
 
+  // console.log("Page", page);
+
 
   const response = {
     slug: path,

@@ -40,7 +40,7 @@
         <div class="g:py-8 text-center md:text-left">
           <a href={fields.slug} class="" >
           {#if fields.tagline}
-            <div class="font-bold text-black dark:text-white  text-primary-500 text-sm text-center md:text-left uppercase py-1">
+            <div class="font-bold dark:text-yellow-500  text-primary-500 text-sm text-center md:text-left uppercase py-1">
               {fields.tagline}
             </div>
           {/if}
@@ -57,7 +57,7 @@
           
           {#if fields.primaryButton}
             <button
-              class="mt-8 bg-primary-500 dark:bg-white text-white dark:text-black font-bold py-2 px-8 rounded shadow transition duration-300 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              class="mt-8 bg-primary-500 bg-primary-700  text-white font-bold py-2 px-8 rounded shadow transition duration-300 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               on:click={() => window.location.href = fields.primaryButton.href}
             >
               {fields.primaryButton.text}

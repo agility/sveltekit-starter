@@ -2,6 +2,8 @@
     export let item: any;
     const { fields } = item;
     const { featuredPost } = fields;
+
+    // console.log('featuredPost->', item);
 </script>
 
 <div class="relative mb-8">
@@ -21,16 +23,17 @@
             <a href={`/blog/${featuredPost.fields.slug}`} class="cursor-pointer">
                 <div class="font-display uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose after:content">
                     <!-- {featuredPost.fields.category?.fields.title} -->
+                     Category
                 </div>
-                <div class="border-b-2 border-primary-500">
+                <!-- <div class="border-b-2 border-primary-500"> -->
                 <div class="mt-4 uppercase text-gray-600 italic font-semibold text-xs">
-                     {featuredPost.properties.modified}
+                    {new Date(featuredPost.properties.modified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </div>
                 <h2 class="font-display text-secondary-500 mt-1 font-black text-2xl group-hover:text-primary-500 transition duration-300">
                     {featuredPost.fields.title}
                 </h2>
                 <p class="text-sm mt-3 leading-loose text-gray-600 font-medium line-clamp-4">
-                    {featuredPost.fields.content}
+                    {@html featuredPost.fields.content}
                 </p>
             </a>
         </div>

@@ -5,4 +5,4 @@
     const { fields } = item;
 </script>
 
-<h1 class="text-black dark:text-white text-5xl mt-8 mb-4">{fields.title}</h1>
+<h1 class="text-black dark:text-white text-3xl font-bold mt-12 mb-6">{fields.title}</h1>
