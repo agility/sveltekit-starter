@@ -4,6 +4,7 @@ import {
   AGILITY_GUID,
   AGILITY_API_PREVIEW_KEY,
   AGILITY_API_FETCH_KEY,
+  AGILITY_SITEMAP,
   NODE_ENV,
 } from "$env/static/private";
 import { error } from "@sveltejs/kit";
@@ -19,8 +20,8 @@ export const getAgilityPage = async ({path, isPreview}: {path:string, isPreview:
   });
 
   const sitemap = await api.getSitemapFlat({
-    channelName: "website",
-    languageCode: "en-us"
+    channelName: AGILITY_SITEMAP,
+    languageCode: AGILITY_LOCALES
   });
 
   const pageInSitemap = sitemap[`/${path}`];

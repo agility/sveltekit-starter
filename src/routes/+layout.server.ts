@@ -11,9 +11,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons'; // Import all regular 
 library.add(fas, fab)
 
 
-export const prerender = true;
-export const ssr = true;
-
 export const load: LayoutServerLoad = async ({ params, cookies }: {params: any, cookies:any}) => { 
  
     const isPreviewMode = cookies.get('previewMode') === 'true';
