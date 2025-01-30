@@ -1,13 +1,9 @@
 <script lang="ts">
-  export let dynamicPageItem: any;
+  export let item: any;
   const {
     fields: { title, image, content, category, date },
-  } = dynamicPageItem;
-  const {
-    fields: { title: categoryName },
-  } = category;
+  } = item;
 </script>
-
 <div class="relative px-8 mt-8">
   <div class="max-w-screen-xl mx-auto">
     <div class="h-64 md:h-96 lg:h-[480px] relative overflow-hidden rounded-lg">
@@ -18,7 +14,7 @@
         data-agility-field="category"
         class="uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose"
       >
-        {categoryName}
+        {category.fields.title}
       </div>
       <div class="border-b-2 border-primary-500 w-8"></div>
       <div
@@ -42,4 +38,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> 

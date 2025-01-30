@@ -8,8 +8,6 @@ import {
   NODE_ENV,
 } from "$env/static/private";
 import { error } from "@sveltejs/kit";
-import { getDynamicPageItem } from '$lib/agility/getDynamicPageItem';
-import { getCategoriesForPosts } from '$lib/agility/getCategoriesForPosts';
 
 export const getAgilityPage = async ({path, isPreview}: {path:string, isPreview:boolean}) => {
 
@@ -19,35 +17,23 @@ export const getAgilityPage = async ({path, isPreview}: {path:string, isPreview:
     isPreview,
   });
 
-  const sitemap = await api.getSitemapFlat({
+  const page = await api.getPageByPath({
+    pagePath: `/${path}`,
+    locale: AGILITY_LOCALES,
     channelName: AGILITY_SITEMAP,
-    languageCode: AGILITY_LOCALES
-  });
-
-  const pageInSitemap = sitemap[`/${path}`];
-
-  if (!pageInSitemap) {
-    error(404, "Not found");
-  }
-
-  const page = await api.getPage({
-    pageID: pageInSitemap.pageID,
-    locale: "en-us"
+    contentLinkDepth: 4,
   });
 
 
-  if(page.dynamic){
-    const dynamicPageItem = await getDynamicPageItem({path, dynamic:page.dynamic, isPreview})
-    page.dynamicPageItem = dynamicPageItem
-  }
 
-  const getCategories = await getCategoriesForPosts(page, isPreview)
-  page.zones = getCategories.zones
+  if(!page){
+    error(404, 'Page not found.')
+  }
 
 
   const response = {
-    slug: path,
-    page,
+    slug: page.sitemapNode.path,
+    page: page
   };
 
   return response;
