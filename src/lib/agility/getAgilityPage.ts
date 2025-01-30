@@ -31,9 +31,6 @@ export const getAgilityPage = async ({path, isPreview}: {path:string, isPreview:
   }
 
 
-  console.log(page)
-
-  console.log(page.page.zones.MainContentZone)
   const response = {
     slug: page.sitemapNode.path,
     page: page

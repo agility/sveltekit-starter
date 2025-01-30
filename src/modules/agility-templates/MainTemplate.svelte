@@ -1,16 +1,12 @@
 <script lang="ts">
   import ContentZone from "../ContentZone.svelte";
-  let { page } = $props();
-  const { zones, seo } = page;
-
-  // console.log(page)
-  const { MainContentZone } = zones;
+  let data = $props();
 </script>
 
 <div id="MainTemplate" class="dark:bg-black max-w-screen-xl mx-auto">
   <div id="zones">
     <div id="MainContentZone">
-      <ContentZone Components={MainContentZone} />
+      <ContentZone zone="MainContentZone" {data}/>
     </div>
   </div>
 </div>

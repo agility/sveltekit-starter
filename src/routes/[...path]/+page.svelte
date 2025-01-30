@@ -3,20 +3,7 @@
   import MainTemplate from "../../modules/agility-templates/MainTemplate.svelte";
 
   let { data }: PageProps = $props();
-  const { page:pageData } = data;
-
-
-  // console.log(page)
-  const  { page, contentItem, sitemapNode }  = pageData;
-
-
-  // console.log(page)
-  // console.log(page)
-  // console.log(sitemapNode)
-  console.log(page)
-  console.log('contentItem', contentItem)
-
-  const { title, templateName, seo} = page
+  const  { page: {title, templateName, seo},  sitemapNode }  = data.page;
 </script>
 
 <svelte:head>
@@ -26,7 +13,7 @@
 </svelte:head>
 
 {#if templateName === "Main Template"}
-  <MainTemplate page={pageData}></MainTemplate>
+  <MainTemplate {...data}></MainTemplate>
 {:else}
   Template not found.
 {/if}

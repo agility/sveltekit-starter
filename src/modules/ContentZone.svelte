@@ -5,9 +5,23 @@
   import TextBlockWithImage from "./agility-components/TextBlockWithImage.svelte";
   import RichTextArea from "./agility-components/RichTextArea.svelte";
   import PostDetails from "./agility-components/PostDetails.svelte";
-  export let Components: any;
   
+  export let zone: string;
+  export let data: any;
 
+  const { page, contentItem } = data.page;
+  const { zones } = page;
+
+  const ContentZone = zones[zone];
+
+  ContentZone.forEach((component: any, index:number) => {
+    if (component.module === "PostDetails") {
+      ContentZone[index].item.fields = contentItem.fields;
+    }
+  });
+
+  export let Components: any = ContentZone;
+  
 </script>
 
 <div>
@@ -23,7 +37,6 @@
     {:else if component.module === "TextBlockWithImage"}
       <TextBlockWithImage {...component} />
     {:else if component.module === "PostDetails"}
-    <!-- {console.log(component)} -->
       <PostDetails {...component} />
     {:else}
       <p>Component {component.module} not found</p>
