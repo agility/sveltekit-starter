@@ -20,5 +20,7 @@ export const getSitemapFlat = async ({isPreview}: {isPreview:boolean}) => {
     languageCode: AGILITY_LOCALES
   });
 
+
+
   return sitemap;
 };

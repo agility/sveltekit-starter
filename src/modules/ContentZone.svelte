@@ -6,7 +6,6 @@
   import RichTextArea from "./agility-components/RichTextArea.svelte";
   import PostDetails from "./agility-components/PostDetails.svelte";
   export let Components: any;
-  export let dynamicPageItem: any;
   
 
 </script>
@@ -24,7 +23,8 @@
     {:else if component.module === "TextBlockWithImage"}
       <TextBlockWithImage {...component} />
     {:else if component.module === "PostDetails"}
-      <PostDetails {...component} {dynamicPageItem} />
+    <!-- {console.log(component)} -->
+      <PostDetails {...component} />
     {:else}
       <p>Component {component.module} not found</p>
     {/if}

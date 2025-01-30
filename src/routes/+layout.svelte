@@ -7,7 +7,7 @@
   let { children, data } = $props();
   
   const { header } = data.page;
-  const { isPreview, NODE_ENV } = data;
+  const { isPreview } = data;
 
 </script>
 

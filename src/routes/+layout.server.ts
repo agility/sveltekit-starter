@@ -24,7 +24,6 @@ export const load: LayoutServerLoad = async ({ params, cookies }: {params: any, 
 
     return {
       isPreview,
-      NODE_ENV,
-      page,
+      page
     };
 };

@@ -1,13 +1,20 @@
 <script lang="ts">
-  export let dynamicPageItem: any;
-  const {
-    fields: { title, image, content, category, date },
-  } = dynamicPageItem;
-  const {
-    fields: { title: categoryName },
-  } = category;
-</script>
+  
+  export let item: any;
 
+  // console.log(item);
+  export let dynamicPageItem: any;
+  // const {
+  //   fields: { title, image, content, category, date },
+  // } = dynamicPageItem;
+
+
+
+  // const {
+  //   fields: { title: categoryName },
+  // } = category;
+</script>
+<!-- 
 <div class="relative px-8 mt-8">
   <div class="max-w-screen-xl mx-auto">
     <div class="h-64 md:h-96 lg:h-[480px] relative overflow-hidden rounded-lg">
@@ -42,4 +49,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
